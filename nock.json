@@ -1,0 +1,132 @@
+{
+ "activity": {
+  "tip": "全部运行完再看任务完成度\n---------------\n一个手机不能运行超过三个账号\n---------------\n点击开始任务自动运行\n---------------\n自托管版 · 助力码 jdqH8mf\n想跳过助力：把 disableBefore 改成 true",
+  "vvv": 1,
+  "mine": {
+   "help": "jdqH8mf",
+   "red": "jXmK5N8",
+   "cart": "jc4r62g",
+   "pv": "jXmoZZ4"
+  },
+  "list": [
+   "❤️开始1111任务❤️",
+   "超级红包入口",
+   "❤️购物车红包"
+  ],
+  "mapping": {
+   "❤️购物车红包": {
+    "url": "taobao://m.tb.cn/h.jc4r62g"
+   },
+   "超级红包入口": {
+    "url": "taobao://m.tb.cn/h.jXmK5N8"
+   },
+   "❤️开始1111任务❤️": {
+    "type": "task",
+    "key": [
+     "赚话费"
+    ]
+   }
+  },
+  "taskList": [
+   "赚话费"
+  ],
+  "disableBefore": false,
+  "startFrom": 0
+ },
+ "taskData": {
+  "tag": "zhuanhuafei",
+  "common": {
+   "url": "https://cdn.jsdelivr.net/gh/cjyoooooo/tb-race-cfg@main/tb.js"
+  },
+  "赚话费": {
+   "type": "task1",
+   "endpage": "taobao://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fm.taobao.com",
+   "main": "taobao://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fm.taobao.com",
+   "endMessage": "种树任务结束",
+   "task": {
+    "tag": "zhuanhuafei",
+    "scheme": "taobao://m.taobao.com/tbopen/index.html?h5Url=",
+    "baseurl": "://market.m.taobao.com/app/tbsearchwireless-pages/tao-gold-srp-task-pop/index?deliveryId=占位参数1&sceneId=8917&q=iphone",
+    "wait": 15,
+    "wait2": "",
+    "param": {
+     "商品定位": [
+      "nike",
+      "anta",
+      "adidas",
+      "chanel",
+      "dior",
+      "biotherm",
+      "oppo"
+     ]
+    },
+    "before": [
+     {
+      "url": "://m.tb.cn/h.jdqH8mf",
+      "wait": 8
+     }
+    ],
+    "item": [
+     "107910 17",
+     "100340",
+     "100340",
+     "100340",
+     "100340",
+     "100340",
+     "100340",
+     "100340",
+     "100340",
+     "100340",
+     "100340",
+     "100453",
+     "100453",
+     "100453",
+     "100453",
+     "100453",
+     "100453",
+     "100453",
+     "100453",
+     "100453",
+     "100453",
+     "100492",
+     "100492",
+     "100492",
+     "100492",
+     "100492",
+     "100492",
+     "100492",
+     "100492",
+     "100492",
+     "100492",
+     "107016",
+     "107016",
+     "107016",
+     "107016",
+     "107016",
+     "100531",
+     "99673",
+     "106363",
+     "99889",
+     "106588",
+     "101866",
+     "107544",
+     "99672",
+     "100454",
+     "100454",
+     "100454",
+     "100454",
+     "100454",
+     "106513",
+     "106513",
+     "106513",
+     "106513",
+     "106513",
+     "106595",
+     "99720",
+     "90782"
+    ]
+   }
+  }
+ },
+ "_mine": "自托管版 · 2026-10-21\n1) 配置与引擎全部迁到 github: cjyoooooo/tb-race-cfg（经 jsDelivr CDN 分发）\n2) 助力链接换成自己的 jdqH8mf（原为作者 jWCRykM）\n3) 保留 107910 逛爆款置顶 + 单项 17s\n4) 新增 disableBefore / startFrom 两个开关"
+}
