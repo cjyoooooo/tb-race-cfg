@@ -30,7 +30,7 @@
   "taskList": [
    "赚话费"
   ],
-  "disableBefore": false,
+  "disableBefore": true,
   "startFrom": 0
  },
  "taskData": {
@@ -133,5 +133,5 @@
    }
   }
  },
- "_mine": "自托管版 · 2026-10-21\n1) 配置与引擎全部迁到 github: cjyoooooo/tb-race-cfg（经 jsDelivr CDN 分发）\n2) 助力链接换成自己的 jdqH8mf（原为作者 jWCRykM）\n3) 保留 107910 逛爆款置顶 + 单项 17s\n4) 新增 disableBefore / startFrom 两个开关\n5) 10-21 与作者最新配置对齐：任务 57 -> 62（补 107860 20s / 99723 12s / 99666 12s / 100942 15s / 107451 12s）"
+ "_mine": "自托管版 · 2026-10-21\n1) 配置与引擎全部迁到 github: cjyoooooo/tb-race-cfg（经 jsDelivr CDN 分发）\n2) 助力链接换成自己的 jdqH8mf（原为作者 jWCRykM）\n3) 保留 107910 逛爆款置顶 + 单项 17s\n4) 新增 disableBefore / startFrom 两个开关\n5) 10-21 与作者最新配置对齐：任务 57 -> 62（补 107860 20s / 99723 12s / 99666 12s / 100942 15s / 107451 12s）\n6) 10-21 复盘：jdqH8mf 其实是原壳里写死的推广位（作者的加抵金码），不是本机助力链接 -> 暂停助力步（disableBefore=true）"
 }
