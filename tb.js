@@ -163,8 +163,11 @@ function run() {
             data.push({ url: s.main, wait: 5 });
 
             // 逐条任务
+            var only = isArr(ACT.only) ? ACT.only.map(function (x) { return String(x); }) : null;
             items.map(function (v, i) {
                 var params = String(v).split(' ');
+                // 只跑指定 deliveryId（排障用）：activity.only: ["107910", "100340"]
+                if (only && only.length && only.indexOf(params[0]) < 0) return;
                 var url = baseUrl;
 
                 for (var key in paramObj) {
