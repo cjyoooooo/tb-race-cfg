@@ -131,9 +131,12 @@ function run() {
     var data = [];
 
     // 任务会话号：服务端靠它判定"这是一次任务浏览"，缺了就不读秒、不计进度
+    var useSid = ACT.useSessionId !== false;          // 关掉就完全不挂会话号
     function sessionId(i) {
+        if (!useSid) return '';
         return (i % 2 === 0) ? '&task_sessionId=9808_101351_1772518898210' : '&task_sessionId=9808_101351_1778308582483';
     }
+    var mainEvery = num(ACT.mainEvery, 2);            // 每 N 条任务后插一次淘宝主站
     function hitOnly(txt) {
         if (!only || !only.length) return true;
         for (var i = 0; i < only.length; i++) { if (String(txt).indexOf(only[i]) >= 0) return true; }
@@ -175,7 +178,7 @@ function run() {
                         url: s.type ? s.scheme + encodeURIComponent('https' + raw) : s.scheme + raw + sessionId(i),
                         wait: objWait > 0 ? objWait : wait
                     });
-                    data.push({ url: s.main, wait: 5 });
+                    if (i % mainEvery === 0) data.push({ url: s.main, wait: 5 });
                     return;
                 }
 
@@ -198,7 +201,7 @@ function run() {
                     url: s.type ? s.scheme + encodeURIComponent('https' + url) : s.scheme + url + sessionId(i),
                     wait: thisWait
                 });
-                data.push({ url: s.main, wait: 5 });
+                if (i % mainEvery === 0) data.push({ url: s.main, wait: 5 });
             });
 
             if (s && s.end && !noPromo) data.push({ url: s.end, wait: 5 });
