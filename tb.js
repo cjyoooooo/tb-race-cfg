@@ -132,6 +132,17 @@ function run() {
 
     // 任务会话号：服务端靠它判定"这是一次任务浏览"，缺了就不读秒、不计进度
     var useSid = ACT.useSessionId !== false;          // 关掉就完全不挂会话号
+    // H5 落地页必须包一层 tbopen 跳板（照作者 tb.js / tj.js 的 wrapFull）
+    // 直接 taobao://host/path 不会带 App 内 webview 上下文，落地页不认任务会话。
+    var TBOPEN = 'taobao://m.taobao.com/tbopen/index.html?h5Url=';
+    function wrapFull(u) {
+        var x = String(u == null ? '' : u).replace(/^\s+|\s+$/g, '');
+        if (!x) return '';
+        if (/^(taobao|taobaolite|tmall|alipays|alipay|sinaweibo|ksnebula|baiduboxapp|baiduboxlite):\/\//i.test(x)) return x;
+        if (/^https?:\/\//i.test(x)) return TBOPEN + encodeURIComponent(x);
+        if (x.indexOf('://') === 0) return TBOPEN + encodeURIComponent('https' + x);
+        return x;
+    }
     function sessionId(i) {
         if (!useSid) return '';
         return (i % 2 === 0) ? '&task_sessionId=9808_101351_1772518898210' : '&task_sessionId=9808_101351_1778308582483';
@@ -175,7 +186,7 @@ function run() {
 
                 if (isFull) {
                     data.push({
-                        url: s.type ? s.scheme + encodeURIComponent('https' + raw) : s.scheme + raw + sessionId(i),
+                        url: wrapFull(raw),
                         wait: objWait > 0 ? objWait : wait
                     });
                     if (i % mainEvery === 0) data.push({ url: s.main, wait: 5 });
@@ -198,7 +209,7 @@ function run() {
                 if (params.length > 1 && /^\d+$/.test(params[1])) thisWait = parseInt(params[1], 10);
 
                 data.push({
-                    url: s.type ? s.scheme + encodeURIComponent('https' + url) : s.scheme + url + sessionId(i),
+                    url: s.type ? s.scheme + encodeURIComponent('https' + url) : wrapFull(url),
                     wait: thisWait
                 });
                 if (i % mainEvery === 0) data.push({ url: s.main, wait: 5 });
