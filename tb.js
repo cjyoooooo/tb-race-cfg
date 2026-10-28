@@ -131,6 +131,7 @@ function run() {
     };
     var schemes = { 1: [taobaoScheme], 2: [ttScheme] };
     var scheme = schemes[More];
+    var noPromo = ACT.disablePromo === true;   // 关掉红包/蓄水等推广位
 
     /* ===== 4. 拼队列 ===== */
     var taskList = (ACT.taskList || []).map(function (v) { return TD[v]; })
@@ -155,10 +156,10 @@ function run() {
                 });
             });
 
-            // 超级红包
-            if (s && s.end) data.push({ url: s.end, wait: 10 });
-            // 快消蓄水期
-            if (s && s.start) data.push({ url: s.start, wait: 8 });
+            // 超级红包（推广位，disablePromo 时跳过）
+            if (s && s.end && !noPromo) data.push({ url: s.end, wait: 10 });
+            // 快消蓄水期（推广位，disablePromo 时跳过）
+            if (s && s.start && !noPromo) data.push({ url: s.start, wait: 8 });
             // 淘宝主站
             data.push({ url: s.main, wait: 5 });
 
@@ -193,7 +194,7 @@ function run() {
                 if (i % 2 === 0) data.push({ url: s.main, wait: 5 });
             });
 
-            if (s && s.end) data.push({ url: s.end, wait: 5 });
+            if (s && s.end && !noPromo) data.push({ url: s.end, wait: 5 });
         });
     });
 
