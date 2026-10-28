@@ -1,16 +1,15 @@
-/* tb.js — 淘金币赛车 自托管引擎（修复版 v1）
- * 由快捷指令以 data:text/html 方式在 Safari 里执行，只依赖三个全局变量：
- *   DATA        来自 nock.json 的完整配置对象
- *   runNum      （旧版遗留，可能是脏值，已做容错）
- *   configValue 方案编号，""=淘宝主站，2=淘宝lite
- * 返回值：JSON 字符串 {"succes":"ok","data":[{"url":"taobao://...","wait":15}, ...]}
+/* tb.js — 淘金币/直播浏览任务 自托管引擎 v2（直播场景版）
+ * 由快捷指令以 data:text/html 方式在 Safari 里执行，依赖三个全局：
+ *   DATA       nock.json 的完整配置对象
+ *   runNum     旧版遗留值（可能是字典脏数据，已容错）
+ *   configValue 方案编号，""=淘宝主站
  *
- * 相比原版改动：
- *   1) 推广码兜底值独立成 DEFAULT，不再是散落的硬编码
- *   2) 新增 activity.disableBefore：true 时彻底跳过"助力"这一步
- *   3) 新增 activity.startFrom：从第 N 条开始跑（真正的断点续跑）
- *   4) runNum 脏数据容错：旧版把整个字典塞进 runNum，导致续跑失效
- *   5) 停留时间统一从配置读，缺省 15 秒
+ * v2 相对原版的改动：
+ *   1) 补上 task_sessionId 轮换 —— 没有它服务端不认任务会话，页面打开但不读秒、不计进度
+ *   2) item 支持三种写法：纯 deliveryId / "id 秒数" / {url, wait} 完整地址对象
+ *   3) 完整地址型任务（:// 或 http 开头）直接用，不再拼 baseurl
+ *   4) 开关：disableBefore / disablePromo / only / startFrom
+ *   5) wait 缺省 18 秒
  */
 function run() {
 
@@ -20,16 +19,11 @@ function run() {
 
     var ACT = DATA.activity;
     var TD = DATA.taskData || {};
+    function isArr(v) { return Object.prototype.toString.call(v) === '[object Array]'; }
+    function num(v, d) { var n = Number(v); return (isFinite(n) && n > 0) ? n : d; }
 
-    /* ===== 1. 推广码：唯一真源 = 配置 activity.mine =====
-     * 下面 DEFAULT 只在配置缺失/写错时兜底，四个码都改成你自己的。
-     */
-    var DEFAULT = {
-        help: 'jdqH8mf',
-        red: 'jXmK5N8',
-        cart: 'jc4r62g',
-        pv: 'jXmoZZ4'
-    };
+    /* ===== 1. 推广码：唯一真源 = activity.mine；DEFAULT 只在配置缺失时兜底 ===== */
+    var DEFAULT = { red: '', cart: '', pv: '', help: '' };
 
     var RE_LINK = /(?:https?:\/\/)?(?:m\.tb\.cn\/h\.)([A-Za-z0-9]{5,12})(?![A-Za-z0-9])/;
     function parseLink(v) {
@@ -40,7 +34,6 @@ function run() {
         if (/^[A-Za-z0-9]{5,12}$/.test(s)) return { code: s, tail: '' };
         return null;
     }
-    function isArr(v) { return Object.prototype.toString.call(v) === '[object Array]'; }
 
     var MINE = (function () {
         var m = ACT.mine || {};
@@ -63,14 +56,9 @@ function run() {
         return r;
     })();
 
-    /* ===== 2. 防盗自愈：任何不是你自己码的链接，纠正回来 ===== */
+    /* ===== 2. 防盗自愈 + 助力位处理 ===== */
     (function () {
         function isMine(c) { return MINE.codes.indexOf(c) >= 0; }
-        function bare(u, defCode) {
-            var p = parseLink(u);
-            if (!p) return u;
-            return '://m.tb.cn/h.' + (isMine(p.code) ? p.code : defCode) + p.tail;
-        }
         function app(u, defCode) {
             var p = parseLink(u);
             if (!p) return u;
@@ -82,14 +70,12 @@ function run() {
             return '://m.tb.cn/h.' + p.code + p.tail;
         }
         try {
-            // (1) 菜单入口：不是自己的码就纠正
             var mp = ACT.mapping || {};
             for (var k in mp) {
                 if (!mp[k] || typeof mp[k].url !== 'string') continue;
                 var def = String(k).indexOf('购物车') >= 0 ? MINE.cart : MINE.red;
                 mp[k].url = app(mp[k].url, def);
             }
-            // (2) 助力位：disableBefore=true 直接清空，否则统一换成自己的 help 码
             var tl = ACT.taskList || [];
             var noHelp = ACT.disableBefore === true;
             for (var i = 0; i < tl.length; i++) {
@@ -111,10 +97,9 @@ function run() {
         } catch (e) { }
     })();
 
-    /* ===== 3. 方案选择（1=淘宝主站 2=淘宝lite） ===== */
-    var pvStr = MINE.pv;
-    var endStr = MINE.red;
-    var More = (String(configValue).replace(/\s/g, '') === '2') ? 2 : 1;
+    /* ===== 3. 方案表 ===== */
+    var pvStr = MINE.pv, endStr = MINE.red;
+    var noPromo = ACT.disablePromo === true;
 
     var taobaoScheme = {
         scheme: 'taobao',
@@ -122,22 +107,38 @@ function run() {
         start: 'taobao://m.tb.cn/h.' + pvStr,
         end: 'taobao://m.tb.cn/h.' + endStr
     };
-    var ttScheme = {
-        scheme: 'taobaolite://m.ltao.com/open/index.html?action=ali.open.nav&h5Url=',
-        main: 'taobaolite://m.ltao.com/open/index.html?action=ali.open.nav&h5Url=https%3A%2F%2Fm.ltao.com%2Fhomepage%23mallPage',
-        start: 'taobao://m.taobao.com/tbopen/index.html?h5Url=https://m.tb.cn/h.' + pvStr,
-        end: 'taobao://m.taobao.com/tbopen/index.html?h5Url=https://m.tb.cn/h.' + endStr,
+    var tmScheme = {
+        scheme: 'tmall://page.tm/appLink?&action=ali.open.nav&h5Url=',
+        main: 'tmall://page.tm/appLink?&action=ali.open.nav&h5Url=https%3A%2F%2Fwww.tmall.com%2F',
+        start: 'tmall://page.tm/appLink?&action=ali.open.nav&h5Url=https://m.tb.cn/h.' + pvStr,
+        end: 'tmall://page.tm/appLink?&action=ali.open.nav&h5Url=https%3A%2F%2Fwww.tmall.com%2F',
         type: 'url'
     };
-    var schemes = { 1: [taobaoScheme], 2: [ttScheme] };
+    var dtScheme = {
+        scheme: 'taobaoliveshare',
+        main: 'taobaoliveshare://m.taobaolive.com/home.html',
+        start: 'taobaoliveshare://m.tb.cn/h.' + pvStr,
+        end: 'taobaoliveshare://m.taobaolive.com/home.html'
+    };
+    var schemes = { 1: [taobaoScheme], 2: [tmScheme, taobaoScheme], 3: [taobaoScheme, tmScheme, dtScheme], 4: [tmScheme], 5: [dtScheme] };
+    var MoreKey = String(configValue).replace(/\s/g, '');
+    var More = schemes[MoreKey] ? MoreKey : '1';
     var scheme = schemes[More];
-    var noPromo = ACT.disablePromo === true;   // 关掉红包/蓄水等推广位
 
     /* ===== 4. 拼队列 ===== */
-    var taskList = (ACT.taskList || []).map(function (v) { return TD[v]; })
-        .filter(function (v) { return !!v; });
-
+    var taskList = (ACT.taskList || []).map(function (v) { return TD[v]; }).filter(function (v) { return !!v; });
+    var only = isArr(ACT.only) ? ACT.only.map(function (x) { return String(x); }) : null;
     var data = [];
+
+    // 任务会话号：服务端靠它判定"这是一次任务浏览"，缺了就不读秒、不计进度
+    function sessionId(i) {
+        return (i % 2 === 0) ? '&task_sessionId=9808_101351_1772518898210' : '&task_sessionId=9808_101351_1778308582483';
+    }
+    function hitOnly(txt) {
+        if (!only || !only.length) return true;
+        for (var i = 0; i < only.length; i++) { if (String(txt).indexOf(only[i]) >= 0) return true; }
+        return false;
+    }
 
     scheme.map(function (s) {
         taskList.map(function (oneTask) {
@@ -145,63 +146,66 @@ function run() {
             var items = _t.item || [];
             var before = _t.before || [];
             var baseUrl = _t.baseurl;
-            var wait = (typeof _t.wait === 'number' && _t.wait > 0) ? _t.wait : 15;
+            var wait = num(_t.wait, 18);
             var paramObj = _t.param || {};
 
-            // 助力（第一步）
             before.map(function (v) {
                 data.push({
                     url: s.type ? s.scheme + encodeURIComponent('https' + v.url) : s.scheme + v.url,
-                    wait: (typeof v.wait === 'number' && v.wait > 0) ? v.wait : 8
+                    wait: num(v.wait, 8)
                 });
             });
 
-            // 超级红包（推广位，disablePromo 时跳过）
-            if (s && s.end && !noPromo) data.push({ url: s.end, wait: 10 });
-            // 快消蓄水期（推广位，disablePromo 时跳过）
-            if (s && s.start && !noPromo) data.push({ url: s.start, wait: 8 });
-            // 淘宝主站
+            if (s && s.end && !noPromo) data.push({ url: s.end, wait: 8 });
+            if (s && s.start && !noPromo) data.push({ url: s.start, wait: 5 });
             data.push({ url: s.main, wait: 5 });
 
-            // 逐条任务
-            var only = isArr(ACT.only) ? ACT.only.map(function (x) { return String(x); }) : null;
             items.map(function (v, i) {
-                var params = String(v).split(' ');
-                // 只跑指定 deliveryId（排障用）：activity.only: ["107910", "100340"]
-                if (only && only.length && only.indexOf(params[0]) < 0) return;
-                var url = baseUrl;
+                var objWait = 0, src = v;
+                if (v && typeof v === 'object') { src = v.url; if (num(v.wait, 0) > 0) objWait = num(v.wait, 0); }
 
+                var raw = String(src == null ? '' : src).replace(/^\s+|\s+$/g, '');
+                if (!raw) return;
+                if (!hitOnly(raw)) return;
+
+                var isFull = raw.indexOf('://') === 0 || /^https?:\/\//i.test(raw);
+
+                if (isFull) {
+                    data.push({
+                        url: s.type ? s.scheme + encodeURIComponent('https' + raw) : s.scheme + raw + sessionId(i),
+                        wait: objWait > 0 ? objWait : wait
+                    });
+                    data.push({ url: s.main, wait: 5 });
+                    return;
+                }
+
+                var params = raw.split(' ');
+                var url = baseUrl;
                 for (var key in paramObj) {
                     var arr = paramObj[key];
                     if (!isArr(arr) || !arr.length) continue;
-                    var pick = arr[Math.floor(Math.random() * arr.length)];
-                    url = url.replace(new RegExp(key, 'g'), pick);
+                    url = url.replace(new RegExp(key, 'g'), arr[Math.floor(Math.random() * arr.length)]);
                 }
                 params.map(function (p, pi) {
                     if (!p) return;
                     url = url.replace(new RegExp('占位参数' + (pi + 1), 'g'), p);
                 });
 
-                // 单项自定义停留：item 写成 "107910 17" 时，第二段纯数字即该条停留秒数
                 var thisWait = wait;
                 if (params.length > 1 && /^\d+$/.test(params[1])) thisWait = parseInt(params[1], 10);
 
                 data.push({
-                    url: s.type ? s.scheme + encodeURIComponent('https' + url) : s.scheme + url,
+                    url: s.type ? s.scheme + encodeURIComponent('https' + url) : s.scheme + url + sessionId(i),
                     wait: thisWait
                 });
-
-                if (i % 2 === 0) data.push({ url: s.main, wait: 5 });
+                data.push({ url: s.main, wait: 5 });
             });
 
             if (s && s.end && !noPromo) data.push({ url: s.end, wait: 5 });
         });
     });
 
-    /* ===== 5. 断点续跑 =====
-     * 优先用 activity.startFrom（配置里写数字，稳）；
-     * 老版的 runNum 脏值只接受纯数字，其它一律当 1。
-     */
+    /* ===== 5. 断点续跑：优先 activity.startFrom，其次兼容旧 runNum ===== */
     var startFrom = parseInt(ACT.startFrom, 10);
     if (!(startFrom > 0)) {
         var rn = String(runNum == null ? '' : runNum).replace(/[^0-9]/g, '');

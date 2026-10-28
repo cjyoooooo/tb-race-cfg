@@ -15,10 +15,10 @@
   ],
   "mapping": {
    "❤️购物车红包": {
-    "url": "taobao://m.tb.cn/h.jc4r62g"
+    "url": "taobao://m.taobao.com/tbopen/index.html?h5Url=https://m.taobao.com"
    },
    "超级红包入口": {
-    "url": "taobao://m.tb.cn/h.jXmK5N8"
+    "url": "taobao://m.taobao.com/tbopen/index.html?h5Url=https://m.taobao.com"
    },
    "❤️开始1111任务❤️": {
     "type": "task",
@@ -37,18 +37,18 @@
  "taskData": {
   "tag": "zhuanhuafei",
   "common": {
-   "url": "https://cdn.jsdelivr.net/gh/cjyoooooo/tb-race-cfg@main/tb.js"
+   "url": "https://fastly.jsdelivr.net/gh/2604237845/tb1111-cfg@main/hhle.js"
   },
   "赚话费": {
    "type": "task1",
    "endpage": "taobao://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fm.taobao.com",
    "main": "taobao://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fm.taobao.com",
-   "endMessage": "种树任务结束",
+   "endMessage": "任务结束",
    "task": {
     "tag": "zhuanhuafei",
     "scheme": "taobao://m.taobao.com/tbopen/index.html?h5Url=",
-    "baseurl": "://market.m.taobao.com/app/tbsearchwireless-pages/tao-gold-srp-task-pop/index?deliveryId=占位参数1&sceneId=8917&q=iphone",
-    "wait": 15,
+    "baseurl": "://h5.m.taobao.com/taolive/video.html?livesource=platformtask.liulan_huntou&needRecommend=true&sLaunch=0&sKeep=1&sModuleName=taolive&spm=&content=6f2f0b67c1d6c1dd27a0ff5c3cd557ed&forceRefresh=true&tl_sceneId=9647&tl_deliveryId=占位参数1&tl_action=commonLiveBrowse&targetAliveId=2299&needCompleteConsecutively=0",
+    "wait": 18,
     "wait2": "",
     "param": {
      "商品定位": [
@@ -61,82 +61,160 @@
       "oppo"
      ]
     },
-    "before": [
-     {
-      "url": "://m.tb.cn/h.jdqH8mf",
-      "wait": 8
-     }
-    ],
+    "before": [],
     "item": [
-     "100340",
-     "100340",
-     "100340",
-     "100340",
-     "100340",
-     "100340",
-     "100340",
-     "100340",
-     "100340",
-     "100340",
-     "100453",
-     "100453",
-     "100453",
-     "100453",
-     "100453",
-     "100453",
-     "100453",
-     "100453",
-     "100453",
-     "100453",
-     "100492",
-     "100492",
-     "100492",
-     "100492",
-     "100492",
-     "100492",
-     "100492",
-     "100492",
-     "100492",
-     "100492",
-     "107016",
-     "107016",
-     "107016",
-     "107016",
-     "107016",
-     "100531 20",
-     "99673",
-     "106363",
-     "99889",
-     "106588",
-     "99672",
-     "100454",
-     "100454",
-     "100454",
-     "100454",
-     "100454",
-     "106513",
-     "106513",
-     "106513",
-     "106513",
-     "106513",
-     "106595",
-     "99720",
-     "90782",
-     "107860 25",
-     "99723 12",
-     "99666 12",
-     "100942 15",
-     "107451 15",
-     "106736 20",
-     "99726 15",
-     "99888 15",
-     "100447 15",
-     "107900 15",
-     "108168 15",
-     "101866 15"
+     "107888",
+     "107888",
+     "107888",
+     "107888",
+     "107888",
+     "107888",
+     "107888",
+     "107888",
+     "107888",
+     "107888",
+     "107887",
+     "107887",
+     "107887",
+     "107887",
+     "107887",
+     "107466",
+     "107466",
+     "107466",
+     "107466",
+     "107466",
+     "107466",
+     "107466",
+     "107466",
+     "107466",
+     "107466",
+     {
+      "url": "://h5.m.taobao.com/taolive/video.html?userId=917264765&entryAccountId=917264765&livesource=platformtask.beiyong50&targetAliveId=2299&forceRefresh=true&tl_sceneId=9647&tl_deliveryId=107610&tl_action=commonLiveBrowse",
+      "wait": 18
+     },
+     {
+      "url": "://h5.m.taobao.com/taolive/video.html?livesource=platformtask.liulan_huntou_shop4&needRecommend=true&sLaunch=0&sKeep=1&sModuleName=taolive&spm=&content=9a6acf3999114c39fa503e549a6185b3&tl_sceneId=9647&tl_deliveryId=107967&tl_action=commonLiveBrowse",
+      "wait": 18
+     },
+     {
+      "url": "://h5.m.taobao.com/taolive/video.html?livesource=platformtask.liulan_huntou_shop4&needRecommend=true&sLaunch=0&sKeep=1&sModuleName=taolive&spm=&content=9a6acf3999114c39fa503e549a6185b3&tl_sceneId=9647&tl_deliveryId=107967&tl_action=commonLiveBrowse",
+      "wait": 18
+     },
+     {
+      "url": "://h5.m.taobao.com/taolive/video.html?livesource=platformtask.liulan_huntou_shop4&needRecommend=true&sLaunch=0&sKeep=1&sModuleName=taolive&spm=&content=9a6acf3999114c39fa503e549a6185b3&tl_sceneId=9647&tl_deliveryId=107967&tl_action=commonLiveBrowse",
+      "wait": 18
+     },
+     {
+      "url": "://h5.m.taobao.com/taolive/video.html?livesource=platformtask.liulan_huntou_shop4&needRecommend=true&sLaunch=0&sKeep=1&sModuleName=taolive&spm=&content=9a6acf3999114c39fa503e549a6185b3&tl_sceneId=9647&tl_deliveryId=107967&tl_action=commonLiveBrowse",
+      "wait": 18
+     },
+     {
+      "url": "://h5.m.taobao.com/taolive/video.html?livesource=platformtask.liulan_huntou_shop4&needRecommend=true&sLaunch=0&sKeep=1&sModuleName=taolive&spm=&content=9a6acf3999114c39fa503e549a6185b3&tl_sceneId=9647&tl_deliveryId=107967&tl_action=commonLiveBrowse",
+      "wait": 18
+     },
+     {
+      "url": "://h5.m.taobao.com/taolive/video.html?livesource=platformtask.liulan_huntou_shop4&needRecommend=true&sLaunch=0&sKeep=1&sModuleName=taolive&spm=&content=9a6acf3999114c39fa503e549a6185b3&tl_sceneId=9647&tl_deliveryId=107967&tl_action=commonLiveBrowse",
+      "wait": 18
+     },
+     {
+      "url": "://h5.m.taobao.com/taolive/video.html?livesource=platformtask.liulan_huntou_shop4&needRecommend=true&sLaunch=0&sKeep=1&sModuleName=taolive&spm=&content=9a6acf3999114c39fa503e549a6185b3&tl_sceneId=9647&tl_deliveryId=107967&tl_action=commonLiveBrowse",
+      "wait": 18
+     },
+     {
+      "url": "://h5.m.taobao.com/taolive/video.html?livesource=platformtask.liulan_huntou_shop4&needRecommend=true&sLaunch=0&sKeep=1&sModuleName=taolive&spm=&content=9a6acf3999114c39fa503e549a6185b3&tl_sceneId=9647&tl_deliveryId=107967&tl_action=commonLiveBrowse",
+      "wait": 18
+     },
+     {
+      "url": "://h5.m.taobao.com/taolive/video.html?livesource=platformtask.liulan_huntou_shop4&needRecommend=true&sLaunch=0&sKeep=1&sModuleName=taolive&spm=&content=9a6acf3999114c39fa503e549a6185b3&tl_sceneId=9647&tl_deliveryId=107967&tl_action=commonLiveBrowse",
+      "wait": 18
+     },
+     {
+      "url": "://h5.m.taobao.com/taolive/video.html?livesource=platformtask.liulan_huntou_shop4&needRecommend=true&sLaunch=0&sKeep=1&sModuleName=taolive&spm=&content=9a6acf3999114c39fa503e549a6185b3&tl_sceneId=9647&tl_deliveryId=107967&tl_action=commonLiveBrowse",
+      "wait": 18
+     },
+     {
+      "url": "://h5.m.taobao.com/taolive/video.html?userId=1759494485&entryAccountId=1759494485&livesource=platformtask.liulan_1759494485&targetAliveId=2299&forceRefresh=true&hiddenNoPause=true&tl_sceneId=9647&tl_deliveryId=99323&tl_action=commonLiveBrowse",
+      "wait": 18
+     },
+     {
+      "url": "://h5.m.taobao.com/taolive/video.html?userId=2213103419666&entryAccountId=2213103419666&livesource=platformtask.liulan_2213103419666&targetAliveId=2299&tl_sceneId=9647&tl_deliveryId=107659&tl_action=commonLiveBrowse",
+      "wait": 10
+     },
+     {
+      "url": "://h5.m.taobao.com/taolive/video.html?userId=2213103419666&entryAccountId=2213103419666&livesource=platformtask.liulan_2213103419666&targetAliveId=2299&tl_sceneId=9647&tl_deliveryId=107659&tl_action=commonLiveBrowse",
+      "wait": 10
+     },
+     {
+      "url": "://h5.m.taobao.com/taolive/video.html?userId=2213103419666&entryAccountId=2213103419666&livesource=platformtask.liulan_2213103419666&targetAliveId=2299&tl_sceneId=9647&tl_deliveryId=107659&tl_action=commonLiveBrowse",
+      "wait": 10
+     },
+     {
+      "url": "://h5.m.taobao.com/taolive/video.html?userId=2217048947710&httpsentryAccountId=2217048947710&livesource=platformtask.beiyong9&targetAliveId=2299&forceRefresh=true&tl_sceneId=9647&tl_deliveryId=108257&tl_action=commonLiveBrowse",
+      "wait": 10
+     },
+     {
+      "url": "://h5.m.taobao.com/taolive/video.html?userId=2217048947710&httpsentryAccountId=2217048947710&livesource=platformtask.beiyong9&targetAliveId=2299&forceRefresh=true&tl_sceneId=9647&tl_deliveryId=108257&tl_action=commonLiveBrowse",
+      "wait": 10
+     },
+     {
+      "url": "://h5.m.taobao.com/taolive/video.html?userId=2217048947710&httpsentryAccountId=2217048947710&livesource=platformtask.beiyong9&targetAliveId=2299&forceRefresh=true&tl_sceneId=9647&tl_deliveryId=108257&tl_action=commonLiveBrowse",
+      "wait": 10
+     },
+     {
+      "url": "://pages-fast.m.taobao.com/wow/z/app/tbddz/ddz-ssr/home?disableNav=YES&status_bar_transparent=true&x-ssr=true&x-sec=wua&asac=2A21519C6DMD9D6IMOK6RC&isUniApp=true&uniapp_id=1011727&uniapp_page=ssr&from=huahua&prismChannel=poplayer&largescreenstyle=fullscreen&hd_from_id=100154&sceneId=9647&deliveryId=98157&implId=other_237_3027008_98157_0",
+      "wait": 12
+     },
+     {
+      "url": "://h5.m.taobao.com/tusou/image_editor/index.html?pssource=huahuale&photofrom=huahuale&prismChannel=poplayer&hd_from_id=100154&sceneId=9647&deliveryId=98463&implId=other_229_3161014_98463_0",
+      "wait": 10
+     },
+     {
+      "url": "://pages-fast.m.taobao.com/wow/z/uniapp/1101685/tb-zhibo-app/gold-game/index?x-ssr=true%253FprismChannel%253Dpoplayer&hd_from_id=100154&sceneId=9647&deliveryId=108089&implId=other_4_3491016_108089_0",
+      "wait": 10
+     },
+     {
+      "url": "://pages-fast.m.taobao.com/wow/z/hdwk/farm-ssr/tmfarm?disableNav=YES&disableProgress=YES&showNavigationBar=true&x-ssr=true&x-preload=true&isTransparentBar=true&uniapp_id=1100518&uniapp_page=farm&hd_from=zhibohudong&prismChannel=poplayer&largescreenstyle=fullscreen&hd_from_id=100154&sceneId=9647&deliveryId=97864&implId=other_265_2848012_97864_0",
+      "wait": 10
+     },
+     {
+      "url": "://pages-fast.m.taobao.com/wow/z/tmtjb/town/home?x-ssr=true&disableNav=YES&x-sec=wua&asac=2A21B017LSI0KGN210C6D7&pha_h5=true&pha_nav=true&uniapp_id=1011525&uniapp_page=home&hd_from=zhibo2611&prismChannel=poplayer&hd_from_id=100154&sceneId=9647&deliveryId=101109&implId=other_168_3022006_101109_0",
+      "wait": 10
+     },
+     {
+      "url": "://h5.m.taobao.com/tnode/index.htm?tabid=video&userToken=1&sceneSource=zbdacutotab2&bizCode=wangzhuan&gameId=592&sceneCode=cif&source=outside&tnode=page_guangguang%253FnavbarHide%253Dtrue%2526initDataKey%253Dguangguang%2526immersive%253Dtrue%2526pageTrack%253Dfalse&extParams=%257B%2522sceneSource%2522%253A%2522zbdacutotab2%2522%257D&hd_from_id=100154&sceneId=9647&deliveryId=106079&implId=other_55_3267021_106079_0",
+      "wait": 10
+     },
+     {
+      "url": "://tb.ele.me/app/TBTakeout/engage-hub/home?wh_weex=true&weex_mode=dom&_wx_statusbar_hidden=true&wx_navbar_hidden=true&disableNav=YES&status_bar_transparent=true&tms_force=true&from=miniapp.taobao&channelInfo=%257B%2522channel%2522%253A%2522miniapp%2522%252C%2522subChannel%2522%253A%2522miniapp.taobao%2522%252C%2522subSubChannel%2522%253A%2522miniapp.taobao.et%2522%257D&alsc_exsrc=ES0015962500&prismChannel=poplayer&hd_from_id=100154&sceneId=9647&deliveryId=102235&implId=other_147_3190033_102235_0",
+      "wait": 10
+     },
+     {
+      "url": "://pages-fast.m.taobao.com/wow/z/uniapp/1100675/tb-zhibo-app/live-save-red-packet/home?x-ssr=true&disableNav=YES&disableProgress=true&forceThemis=true&channel=m036&spma=a21ueg&spmb=33068457&versionCode=isvDaily&prismChannel=poplayer&hd_from_id=100154&sceneId=9647&deliveryId=101539&implId=other_161_3178009_101539_0",
+      "wait": 10
+     },
+     {
+      "url": "://pages-fast.m.taobao.com/wow/z/uniapp/1101682/tb-zhibo-app/game-index/index?disableNav=YES&status_bar_transparent=true&prismChannel=poplayer&hd_from_id=100154&sceneId=9647&deliveryId=106077&implId=other_54_3411007_106077_0",
+      "wait": 15
+     },
+     {
+      "url": "://pages-fast.m.taobao.com/wow/z/uniapp/1101684/tb-zhibo-app/elimination-game/index?disableNav=YES&status_bar_transparent=true&prismChannel=poplayer&hd_from_id=100154&sceneId=9647&deliveryId=106078&implId=other_54_3414002_106078_0",
+      "wait": 15
+     },
+     {
+      "url": "://pages-fast.m.taobao.com/wow/z/app/wt/hym/home?x-ssr=true&disableNav=YES&subSource=huahuale&x-preload=true&prismChannel=poplayer&largescreenstyle=fullscreen&hd_from_id=100154&sceneId=9647&deliveryId=97908&implId=other_244_3048012_97908_0",
+      "wait": 10
+     },
+     {
+      "url": "://pages-fast.m.taobao.com/wow/z/tblife/achievement-i/JX4ezmspfN8txPMWyawe?x-ssr=true&disableNav=YES&status_bar_transparent=true&_ali_full_screen_=true&disableProgress=true&tao_mini_h5=true&uniapp_id=1012454&uniapp_page=home&from=tbzhibo&prismChannel=poplayer&hd_from_id=100154&sceneId=9647&deliveryId=97911&implId=other_244_3336006_97911_0",
+      "wait": 10
+     },
+     {
+      "url": "://pages-fast.m.taobao.com/wow/z/uniapp/1101683/tb-zhibo-app/snake-game/index?prismChannel=poplayer&hd_from_id=100154&sceneId=9647&deliveryId=106577&implId=other_54_3480007_106577_0",
+      "wait": 20
+     }
     ]
    }
   }
  },
- "_mine": "自托管版 · 2026-10-21\n1) 配置与引擎全部迁到 github: cjyoooooo/tb-race-cfg（经 jsDelivr CDN 分发）\n2) 助力链接换成自己的 jdqH8mf（原为作者 jWCRykM）\n3) 保留 107910 逛爆款置顶 + 单项 17s\n4) 新增 disableBefore / startFrom 两个开关\n5) 10-21 与作者最新配置对齐：任务 57 -> 62（补 107860 20s / 99723 12s / 99666 12s / 100942 15s / 107451 12s）\n6) 10-21 复盘：jdqH8mf 其实是原壳里写死的推广位（作者的加抵金码），不是本机助力链接 -> 暂停助力步（disableBefore=true）\n7) 10-28 与作者对齐：任务 62 -> 66（27 种）；删下架的 107910 / 隐藏位 107544；100531 20s、107451 15s、107860 25s；新增 106736 20s 与 99726/99888/100447/107900/108168/101866 各 15s。\n8) 11-11 活动换期，旧推广码（jXmK5N8/jc4r62g/jXmoZZ4）大概率失效 -> 开 disablePromo 关掉红包/蓄水两步，等换上新码再开"
+ "_mine": "自托管版 · 2026-10-21\n1) 配置与引擎全部迁到 github: cjyoooooo/tb-race-cfg（经 jsDelivr CDN 分发）\n2) 助力链接换成自己的 jdqH8mf（原为作者 jWCRykM）\n3) 保留 107910 逛爆款置顶 + 单项 17s\n4) 新增 disableBefore / startFrom 两个开关\n5) 10-21 与作者最新配置对齐：任务 57 -> 62（补 107860 20s / 99723 12s / 99666 12s / 100942 15s / 107451 12s）\n6) 10-21 复盘：jdqH8mf 其实是原壳里写死的推广位（作者的加抵金码），不是本机助力链接 -> 暂停助力步（disableBefore=true）\n7) 10-28 与作者对齐：任务 62 -> 66（27 种）；删下架的 107910 / 隐藏位 107544；100531 20s、107451 15s、107860 25s；新增 106736 20s 与 99726/99888/100447/107900/108168/101866 各 15s。\n8) 11-11 活动换期，旧推广码（jXmK5N8/jc4r62g/jXmoZZ4）大概率失效 -> 开 disablePromo 关掉红包/蓄水两步，等换上新码再开\n9) 10-28 22:00 场景切换：淘金币搜索浮层(sceneId=8917)**已不读秒**，改用直播浏览任务（taolive/video.html，tl_sceneId=9647，56 条 / wait=18）；引擎补上 author 的 task_sessionId 轮换逻辑\n10) 菜单里的两个推广项（旧码已失效）改为打开淘宝主站，避免点了报『领取异常』"
 }
