@@ -1,0 +1,120 @@
+{
+ "activity": {
+  "tip": "点击开始直接运行\n一个手机建议不超过三个号",
+  "vvv": 1,
+  "shortcut": "https://www.icloud.com/shortcuts/ff0c07253a584531a147c8deb50fc9be",
+  "list": [
+   "❤️开始1111任务❤️"
+  ],
+  "mapping": {
+   "❤️开始1111任务❤️": {
+    "type": "task",
+    "key": [
+     "赚话费"
+    ]
+   }
+  },
+  "taskList": [
+   "赚话费"
+  ]
+ },
+ "taskData": {
+  "tag": "zhuanhuafei",
+  "common": {
+   "url": "https://cjyoooooo.github.io/tb-race-cfg/car1111.js"
+  },
+  "赚话费": {
+   "type": "task1",
+   "endpage": "taobao://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fm.taobao.com",
+   "main": "taobao://m.taobao.com/tbopen/index.html?h5Url=https%3A%2F%2Fm.taobao.com",
+   "endMessage": "种树任务结束",
+   "task": {
+    "tag": "zhuanhuafei",
+    "scheme": "taobao://m.taobao.com/tbopen/index.html?h5Url=",
+    "baseurl": "://s.m.taobao.com/h5?ut_sk=1.al5fl06PsTgDACb%2BqFXotCTe_21380790_1793155473392.Copy.shoutaosearch&g_channelSrp=hbrwad&deliveryId=占位参数1&sceneId=8917",
+    "wait": 17,
+    "wait2": "",
+    "param": {
+     "商品定位": [
+      "nike",
+      "anta",
+      "adidas",
+      "chanel",
+      "dior",
+      "biotherm",
+      "oppo"
+     ]
+    },
+    "before": [],
+    "item": [
+     "100340",
+     "100340",
+     "100340",
+     "100340",
+     "100340",
+     "100340",
+     "100340",
+     "100340",
+     "100340",
+     "100340",
+     "100453",
+     "100453",
+     "100453",
+     "100453",
+     "100453",
+     "100453",
+     "100453",
+     "100453",
+     "100453",
+     "100453",
+     "100492",
+     "100492",
+     "100492",
+     "100492",
+     "100492",
+     "100492",
+     "100492",
+     "100492",
+     "100492",
+     "100492",
+     "107016",
+     "107016",
+     "107016",
+     "107016",
+     "107016",
+     "100454",
+     "100454",
+     "100454",
+     "100454",
+     "100454",
+     "106513",
+     "106513",
+     "106513",
+     "106513",
+     "106513",
+     "99673",
+     "106369",
+     "106363",
+     "99889",
+     "107860",
+     "106370",
+     "107544",
+     "99726",
+     "100531",
+     "99723",
+     "99888",
+     "107900",
+     "107953",
+     "101866",
+     "99672",
+     "100447",
+     "99720"
+    ]
+   }
+  }
+ },
+ "_selfhost": {
+  "note": "自托管副本：已删除原作者菜单项（超级红包入口 / 交流·反馈 qq群）",
+  "engine": "https://cjyoooooo.github.io/tb-race-cfg/car1111.js"
+ }
+}
