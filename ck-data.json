@@ -206,7 +206,7 @@
  "tbck": {},
  "urlArr": [],
  "_selfhost": {
-  "note": "本地签名自托管版：run() 不再调用作者网关换签名地址",
+  "note": "本地签名自托管版：run() 不再调用作者网关换签名地址（作者网关已停用）",
   "engine": "https://cjyoooooo.github.io/tb-race-cfg/myck.js",
   "md5": "内置于 myck.js，sign=md5(token&t&appKey&data)",
   "cookie": "只在手机内存中使用，不上传任何服务器"
