@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>打开淘金币页（抓 cookie 用）</title>
+<style>
+ body{margin:0;padding:28px 18px;font:16px/1.75 -apple-system,"PingFang SC",sans-serif;background:#0f1115;color:#e8eaf0}
+ .c{max-width:620px;margin:0 auto}
+ h1{font-size:19px;margin:0 0 6px} .s{color:#8a8f9c;font-size:13px;margin-bottom:22px}
+ .step{background:#1a1d24;border-radius:14px;padding:14px 16px;margin:10px 0;font-size:14px;color:#c9cedb}
+ .step b{color:#4ade80}
+ a.btn{display:block;text-align:center;background:#f97316;color:#fff;font-weight:700;padding:15px;border-radius:14px;text-decoration:none;margin:16px 0 8px;font-size:16px}
+ a.ghost{display:block;text-align:center;background:#232733;color:#c9cedb;padding:13px;border-radius:14px;text-decoration:none;font-size:14px}
+ code{background:#232733;padding:2px 6px;border-radius:5px;font-size:12px}
+</style></head><body><div class="c">
+<h1>抓 cookie 用：把淘金币 H5 页拉起来</h1>
+<div class="s">先在 Stream 里开始录制，再点下面的按钮</div>
+<div class="step"><b>1.</b> 确认 Stream 正在录制</div>
+<div class="step"><b>2.</b> 点下面橙色的按钮 → 会跳到淘宝 App 的淘金币页</div>
+<div class="step"><b>3.</b> 等页面完全加载（约 3 秒），回 Stream <b>停止录制</b> → 导出 HAR</div>
+<a class="btn" id="go">在淘宝 App 中打开淘金币页</a>
+<a class="ghost" id="go2">打不开？用普通浏览器打开</a>
+<div class="step" style="margin-top:18px">导出后找带 <code>Cookie</code> 头、且含 <code>_m_h5_tk</code> 与 <code>_m_h5_tk_enc</code> 的那条请求即可。</div>
+</div>
+<script>
+var APP='taobao://pages-fast.m.taobao.com/wow/z/tmtjb/town/home?x-ssr=true&disableNav=YES&pha_h5=true&pha_nav=true&uniapp_id=1011525&uniapp_page=home&hd_from=tmnc26618&prismChannel=poplayer&sceneId=8917&hd_from_id=100260';
+var WEB='https://pages-fast.m.taobao.com/wow/z/tmtjb/town/home?x-ssr=true&disableNav=YES&pha_h5=true&pha_nav=true&uniapp_id=1011525&uniapp_page=home&hd_from=tmnc26618&prismChannel=poplayer&sceneId=8917&hd_from_id=100260';
+document.getElementById('go').onclick=function(){location.href=APP;};
+document.getElementById('go2').onclick=function(){location.href=WEB;};
+</script></body></html>
